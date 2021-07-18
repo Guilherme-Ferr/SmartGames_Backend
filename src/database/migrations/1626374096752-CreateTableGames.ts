@@ -9,9 +9,10 @@ export class CreateTableGames1626374096752 implements MigrationInterface {
         columns: [
           {
             name: "id_game",
-            type: "int",
+            type: "integer",
             isPrimary: true,
             isGenerated: true,
+            generationStrategy: "increment",
           },
           {
             name: "name",

@@ -5,12 +5,15 @@ import {
   UpdateDateColumn,
   PrimaryGeneratedColumn,
   PrimaryColumn,
+  JoinTable,
+  ManyToMany,
 } from "typeorm";
+import { Games } from "./Games";
 
 @Entity("platforms")
 class Platforms {
-  @PrimaryColumn()
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn("integer")
+  @PrimaryGeneratedColumn("increment")
   id_platform: number;
 
   @Column()

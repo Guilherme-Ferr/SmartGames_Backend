@@ -9,9 +9,10 @@ export class CreateTableStores1626472977034 implements MigrationInterface {
         columns: [
           {
             name: "id_store",
-            type: "int",
+            type: "integer",
             isPrimary: true,
             isGenerated: true,
+            generationStrategy: "increment",
           },
           {
             name: "name",
@@ -19,7 +20,7 @@ export class CreateTableStores1626472977034 implements MigrationInterface {
           },
           {
             name: "cep",
-            type: "int",
+            type: "integer",
           },
           {
             name: "created_at",

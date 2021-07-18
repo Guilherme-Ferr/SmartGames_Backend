@@ -8,18 +8,25 @@ export class CreateTablePlatforms1626472999414 implements MigrationInterface {
         name: "platforms",
         columns: [
           {
-            name: "id_store",
-            type: "int",
+            name: "id_platform",
+            type: "integer",
             isPrimary: true,
             isGenerated: true,
+            generationStrategy: "increment",
           },
           {
             name: "name",
             type: "varchar",
           },
           {
-            name: "cep",
-            type: "int",
+            name: "created_at",
+            type: "timestamp",
+            default: "now()",
+          },
+          {
+            name: "updated_at",
+            type: "timestamp",
+            default: "now()",
           },
         ],
       })

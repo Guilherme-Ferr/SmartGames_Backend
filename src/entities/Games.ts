@@ -6,12 +6,15 @@ import {
   Double,
   PrimaryGeneratedColumn,
   PrimaryColumn,
+  ManyToMany,
+  JoinTable,
 } from "typeorm";
+import { Platforms } from "./Platforms";
 
 @Entity("games")
 class Games {
-  @PrimaryColumn()
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn("integer")
+  @PrimaryGeneratedColumn("increment")
   id_game: number;
 
   @Column()
@@ -25,6 +28,10 @@ class Games {
 
   @Column()
   image: string;
+
+  @ManyToMany((type) => Platforms)
+  @JoinTable()
+  platforms: Platforms;
 
   @CreateDateColumn()
   created_at: Date;

@@ -10,14 +10,14 @@ import {
 
 @Entity("stores")
 class Stores {
-  @PrimaryColumn()
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn("integer")
+  @PrimaryGeneratedColumn("increment")
   id_store: number;
 
   @Column()
   name: string;
 
-  @Column("int")
+  @Column("integer")
   cep: Long;
 
   @CreateDateColumn()
