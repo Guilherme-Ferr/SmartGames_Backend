@@ -1,7 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import { GamesRepositories } from "../repositories/GamesRepositories";
 import { Request, Response } from "express";
-import { CreateGamesServices } from "../services/GamesService";
 
 export default {
   //Listar todos os jogos
@@ -25,54 +24,31 @@ export default {
       relations: ["platforms", "stores"],
     });
 
-    return res.send(game);
-  },
+    if (game.discount == 0) {
+      const gameNewValue = (game.value * gameNewValue) / 100;
 
-  //Inserir um jogo
-  async store(req: Request, res: Response) {
-    const { name, description, value, image, platformId } = req.body;
-    console.log(platformId);
-
-    try {
-      const createGameService = new CreateGamesServices();
-
-      const gamesRepositories = getCustomRepository(GamesRepositories);
-
-      const game = await createGameService.store({
-        name,
-        description,
-        value,
-        image,
-      });
-      for (const item in platformId) {
-        await gamesRepositories.query(
-          `insert into games_platforms_platforms(gamesIdGame, platformsIdPlatform, created_at) values(${
-            game.id_game
-          }, ${parseInt(item) + 1}, datetime("now"))`
-        );
-      }
-
-      return res.json(game);
-    } catch (error) {
-      res.status(400).send(error);
+      game.value = game.value = (game.discount * game.value) / 100;
+    } else {
+      res.send("Desconto ja aplicado");
     }
+
+    return res.send(game);
   },
 
   //Aplicar desconto
   async update(req: Request, res: Response) {
-    const { name } = req.body;
+    const { id } = req.params;
 
     const gameRepositorie = getCustomRepository(GamesRepositories);
 
     try {
-      const game = await gameRepositorie.findOne(name);
+      const game = await gameRepositorie.findOne(id);
 
       game.discount = 20;
 
       gameRepositorie.save(game);
 
-      //retornar resposta
-      return res.json(game);
+      return res.send(game);
     } catch (error) {
       res.status(400).send(error);
     }

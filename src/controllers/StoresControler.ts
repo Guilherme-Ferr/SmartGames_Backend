@@ -1,7 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import { StoresRepositories } from "../repositories/StoresRepositories";
 import { Request, Response } from "express";
-import { CreateStoresServices } from "../services/StoresService";
 
 export default {
   //Listar todas as lojas
@@ -22,22 +21,5 @@ export default {
     const store = await storesRepositories.findOne(id);
 
     return res.send(store);
-  },
-
-  //Inserir uma loja
-  async store(req: Request, res: Response) {
-    const { name, cep } = req.body;
-
-    try {
-      const createStoreService = new CreateStoresServices();
-
-      const store = await createStoreService.store({
-        name,
-        cep,
-      });
-      return res.json(store);
-    } catch (error) {
-      res.status(400).send(error);
-    }
   },
 };
