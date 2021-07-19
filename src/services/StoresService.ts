@@ -7,7 +7,7 @@ interface Istores {
 }
 
 class CreateStoresServices {
-  async execute({ name, cep }: Istores) {
+  async store({ name, cep }: Istores) {
     const storesRepository = getCustomRepository(StoresRepositories);
 
     const store = storesRepository.create({

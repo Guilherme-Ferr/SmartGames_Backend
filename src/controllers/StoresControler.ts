@@ -31,7 +31,7 @@ export default {
     try {
       const createStoreService = new CreateStoresServices();
 
-      const store = await createStoreService.execute({
+      const store = await createStoreService.store({
         name,
         cep,
       });

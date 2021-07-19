@@ -3,9 +3,9 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  Long,
   PrimaryGeneratedColumn,
   PrimaryColumn,
+  Double,
 } from "typeorm";
 
 @Entity("stores")
@@ -17,8 +17,14 @@ class Stores {
   @Column()
   name: string;
 
-  @Column("integer")
-  cep: Long;
+  @Column()
+  cep: number;
+
+  @Column("double")
+  altitude: Double;
+
+  @Column("double")
+  longitude: Double;
 
   @CreateDateColumn()
   created_at: Date;

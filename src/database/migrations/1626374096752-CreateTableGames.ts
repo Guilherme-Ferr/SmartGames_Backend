@@ -1,8 +1,8 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateTableGames1626374096752 implements MigrationInterface {
-  //Criar tabela de games
   public async up(queryRunner: QueryRunner): Promise<void> {
+    //Criar tabela de games
     await queryRunner.createTable(
       new Table({
         name: "games",
@@ -25,6 +25,10 @@ export class CreateTableGames1626374096752 implements MigrationInterface {
           {
             name: "value",
             type: "double",
+          },
+          {
+            name: "discount",
+            type: "integer",
           },
           {
             name: "image",

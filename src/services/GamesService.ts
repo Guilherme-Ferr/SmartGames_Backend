@@ -9,7 +9,7 @@ interface Igames {
 }
 
 class CreateGamesServices {
-  async execute({ name, description, value, image }: Igames) {
+  async store({ name, description, value, image }: Igames) {
     const gamesRepository = getCustomRepository(GamesRepositories);
 
     const game = gamesRepository.create({

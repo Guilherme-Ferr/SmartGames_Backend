@@ -5,10 +5,7 @@ import {
   UpdateDateColumn,
   PrimaryGeneratedColumn,
   PrimaryColumn,
-  JoinTable,
-  ManyToMany,
 } from "typeorm";
-import { Games } from "./Games";
 
 @Entity("platforms")
 class Platforms {

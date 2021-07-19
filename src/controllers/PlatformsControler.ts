@@ -31,7 +31,7 @@ export default {
     try {
       const createPlatformService = new CreatePlatformsServices();
 
-      const platform = await createPlatformService.execute({
+      const platform = await createPlatformService.store({
         name,
       });
       return res.json(platform);

@@ -1,8 +1,8 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateTableStores1626472977034 implements MigrationInterface {
-  //Criar tabela de lojas
   public async up(queryRunner: QueryRunner): Promise<void> {
+    //Criar tabela de lojas
     await queryRunner.createTable(
       new Table({
         name: "stores",
@@ -21,6 +21,14 @@ export class CreateTableStores1626472977034 implements MigrationInterface {
           {
             name: "cep",
             type: "integer",
+          },
+          {
+            name: "longitude",
+            type: "double",
+          },
+          {
+            name: "altitude",
+            type: "double",
           },
           {
             name: "created_at",

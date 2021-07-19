@@ -10,6 +10,7 @@ import {
   JoinTable,
 } from "typeorm";
 import { Platforms } from "./Platforms";
+import { Stores } from "./Stores";
 
 @Entity("games")
 class Games {
@@ -20,7 +21,7 @@ class Games {
   @Column()
   name: string;
 
-  @Column()
+  @Column("text")
   description: string;
 
   @Column("double")
@@ -29,9 +30,16 @@ class Games {
   @Column()
   image: string;
 
+  @Column("integer")
+  discount: number;
+
   @ManyToMany((type) => Platforms)
   @JoinTable()
-  platforms: Platforms;
+  platforms: Promise<Platforms[]>;
+
+  @ManyToMany((type) => Stores)
+  @JoinTable()
+  stores: Promise<Stores[]>;
 
   @CreateDateColumn()
   created_at: Date;

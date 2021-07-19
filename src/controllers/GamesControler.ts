@@ -8,9 +8,9 @@ export default {
   async index(req: Request, res: Response) {
     const gamesRepositories = getCustomRepository(GamesRepositories);
 
-    const games = await gamesRepositories.query(
-      "select games.id_game as idGame, games.name as gameName, platforms.id_platform as idPlatform, platforms.name as platformName from games inner join games_platforms_platforms on games.id_game = games_platforms_platforms.gamesIdGame inner join platforms on platforms.id_platform = games_platforms_platforms.platformsIdPlatform order by games.name asc"
-    );
+    const games = await gamesRepositories.find({
+      relations: ["platforms", "stores"],
+    });
 
     return res.send(games);
   },
@@ -21,7 +21,9 @@ export default {
 
     const gamesRepositories = getCustomRepository(GamesRepositories);
 
-    const game = await gamesRepositories.findOne(id);
+    const game = await gamesRepositories.findOne(id, {
+      relations: ["platforms", "stores"],
+    });
 
     return res.send(game);
   },
@@ -36,7 +38,7 @@ export default {
 
       const gamesRepositories = getCustomRepository(GamesRepositories);
 
-      const game = await createGameService.execute({
+      const game = await createGameService.store({
         name,
         description,
         value,
@@ -50,6 +52,26 @@ export default {
         );
       }
 
+      return res.json(game);
+    } catch (error) {
+      res.status(400).send(error);
+    }
+  },
+
+  //Aplicar desconto
+  async update(req: Request, res: Response) {
+    const { name } = req.body;
+
+    const gameRepositorie = getCustomRepository(GamesRepositories);
+
+    try {
+      const game = await gameRepositorie.findOne(name);
+
+      game.discount = 20;
+
+      gameRepositorie.save(game);
+
+      //retornar resposta
       return res.json(game);
     } catch (error) {
       res.status(400).send(error);

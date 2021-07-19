@@ -6,7 +6,7 @@ interface Iplatforms {
 }
 
 class CreatePlatformsServices {
-  async execute({ name }: Iplatforms) {
+  async store({ name }: Iplatforms) {
     const platformsRepository = getCustomRepository(PlatformsRepositories);
 
     const platform = platformsRepository.create({
