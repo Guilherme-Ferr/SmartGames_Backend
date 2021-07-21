@@ -19,15 +19,11 @@ export class CreateTableStores1626472977034 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "cep",
-            type: "integer",
-          },
-          {
-            name: "longitude",
+            name: "latitude",
             type: "double",
           },
           {
-            name: "altitude",
+            name: "longitude",
             type: "double",
           },
           {

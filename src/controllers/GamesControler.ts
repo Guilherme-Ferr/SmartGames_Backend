@@ -1,4 +1,4 @@
-import { getCustomRepository } from "typeorm";
+import { Double, getCustomRepository } from "typeorm";
 import { GamesRepositories } from "../repositories/GamesRepositories";
 import { Request, Response } from "express";
 
@@ -24,12 +24,10 @@ export default {
       relations: ["platforms", "stores"],
     });
 
-    if (game.discount == 0) {
-      const gameNewValue = (game.value * gameNewValue) / 100;
+    if (game.discount !== 0) {
+      const discountValue: number = (game.discount * Number(game.value)) / 100;
 
-      game.value = game.value = (game.discount * game.value) / 100;
-    } else {
-      res.send("Desconto ja aplicado");
+      game.value = Number(game.value) - discountValue;
     }
 
     return res.send(game);

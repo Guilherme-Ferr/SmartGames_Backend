@@ -17,11 +17,8 @@ class Stores {
   @Column()
   name: string;
 
-  @Column()
-  cep: number;
-
   @Column("double")
-  altitude: Double;
+  latitude: Double;
 
   @Column("double")
   longitude: Double;
