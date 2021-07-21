@@ -24,12 +24,6 @@ export default {
       relations: ["platforms", "stores"],
     });
 
-    if (game.discount !== 0) {
-      const discountValue: number = (game.discount * Number(game.value)) / 100;
-
-      game.value = Number(game.value) - discountValue;
-    }
-
     return res.send(game);
   },
 
@@ -43,6 +37,10 @@ export default {
       const game = await gameRepositorie.findOne(id);
 
       game.discount = 20;
+
+      const discountValue: number = (game.discount * Number(game.value)) / 100;
+
+      game.value = Number(game.value) - discountValue;
 
       gameRepositorie.save(game);
 
