@@ -17,15 +17,13 @@
 ```
 - Instalar dependências do projeto -> $ yarn install
 
-
-
 - No arquivo ormconfig.json, altere os dados para o seu banco de dados local
 
 - Type: (Caso o seu banco de dados não seja o Mysql, colocar o banco de dados que estiver utilizando)
 
 - Criar o banco de dados no Workbench, executando o comando -> "create database smartgames;"
 
-- Sincronizar o back com o banco criado as tabelas e relacionamentos $ yarn typeorm schema:sync
+- Sincronizar o back com o banco criado as tabelas e relacionamentos -> $ yarn typeorm schema:sync
 
 - Importar o dump do Banco no MYSQL para popular as tabelas com os dados fornecidos na pasta -> imports\smartgames.sql
 ```
