@@ -15,6 +15,14 @@
 ### Pré-requisitos necessários para rodar o projeto
 
 ```
+- Baixar e instalar o node.js em:
+  https://nodejs.org/en/
+
+- Baixar e instalar o MySQL Workbench em:
+  https://dev.mysql.com/downloads/file/?id=506568
+  
+- Instalar o yarn -> $ npm install --global yarn
+
 - Instalar dependências do projeto -> $ yarn install
 
 - No arquivo ormconfig.json, altere os dados para o seu banco de dados local
