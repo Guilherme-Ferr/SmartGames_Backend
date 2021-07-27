@@ -17,7 +17,7 @@
 ```
 - Instalar dependências do projeto -> $ yarn install
 
-- Importar o Banco no MYSQL
+
 
 - No arquivo ormconfig.json, altere os dados para o seu banco de dados local
 
@@ -27,7 +27,7 @@
 
 - Sincronizar o back com o banco criado as tabelas e relacionamentos $ yarn typeorm schema:sync
 
-- Popular as tabelas do banco com os dados fornecidos pela arquivo sql -> imports\smartgames.sql
+- Importar o dump do Banco no MYSQL para popular as tabelas com os dados fornecidos na pasta -> imports\smartgames.sql
 ```
 
 Após a instalação das depêndencias e a criação do banco de dados, basta iniciar a aplicação atraves da porta "3333" -> $ yarn dev
