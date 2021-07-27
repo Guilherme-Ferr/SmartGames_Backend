@@ -1,4 +1,4 @@
-import { Double, getCustomRepository } from "typeorm";
+import { getCustomRepository } from "typeorm";
 import { GamesRepositories } from "../repositories/GamesRepositories";
 import { Request, Response } from "express";
 
